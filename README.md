@@ -12,10 +12,10 @@ This project using the following languages and frameworks:
 The backend app is running on a Postgres server, so you need to create the database service before any execution.
 
 ## Backend
-The backend app. It's a REST service created with JavaScript. This is a CRUD app with Postgres database.
+On the development side, I’m working on libraries such as Express to create a server, Passport and JWT for authentication, Knex and Postgres for migration and queries to the database.
 
 ## Testing
-All test created have focused on API’s Layers: services calls, routes, service’s layer, business rules, database.
+Jest resources to make assertive and structure our tests. The flow passes from the URL call, through routing, business rules, and database.
 
 ### Any question, error or feedback?
 Please fill an issue ;-)
