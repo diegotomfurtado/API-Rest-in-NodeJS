@@ -17,5 +17,15 @@ module.exports = (app) => {
             .then(result => res.status(200).json(result));
     }
 
-    return {create, getAll, get};
+    const update = (req, res) => {
+        app.services.account.update(req.params.id, req.body)
+            .then(result => res.status(200).json(result[0]));
+    }
+
+    return {
+        create, 
+        getAll,
+        get, 
+        update,
+    };
 };

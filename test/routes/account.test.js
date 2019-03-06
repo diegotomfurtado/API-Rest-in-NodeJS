@@ -28,7 +28,7 @@ test('Should add an accounts with success', () => {
 test('Should list all existing accounts', () => {
     return app.db('accounts')
         .insert({
-            name: 'Diego Furtado',
+            name: 'Diego Furtado - Listing an account',
             user_id: user.id
         })
         .then(() => request(app).get(MAIN_ROUTE))
@@ -41,13 +41,27 @@ test('Should list all existing accounts', () => {
 test ('Should return one account by id', () => {
     return app.db('accounts')
         .insert({
-            name: 'Diego Furtado',
+            name: 'Diego Furtado - Returning an account',
             user_id: user.id
         }, ['id'])
         .then(acc => request(app).get(`${MAIN_ROUTE}/${acc[0].id}`))
         .then((res) => {
             expect(res.status).toBe(200);
-            expect(res.body.name).toBe('Diego Furtado');
+            expect(res.body.name).toBe('Diego Furtado - Returning an account');
             expect(res.body.user_id).toBe(user.id);
+        });
+});
+
+test ('Should update an account', () => {
+    return app.db('accounts')
+        .insert({
+            name: 'Diego Furtado - Updating an account',
+            user_id: user.id
+        }, ['id'])
+        .then(acc => request(app).put(`${MAIN_ROUTE}/${acc[0].id}`)
+            .send({name: 'Diego Furtado - Updated an account'}))
+        .then((res) => {
+            expect(res.status).toBe(200);
+            expect(res.body.name).toBe('Diego Furtado - Updated an account');
         });
 });
