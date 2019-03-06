@@ -18,13 +18,13 @@ On the development side, I’m working on libraries such as Express to create a 
 Jest resources to make assertive and structure our tests. The flow passes from the URL call, through routing, business rules, and database.
 
 ## What I've done
-/users
+/users,
 /accounts
 
 ## What is in my backlog to implement
-/auth
-/transactions
-/tranfers
+/auth,
+/transactions,
+/tranfers,
 /balance
 
 ### Any question, error or feedback?
