@@ -65,3 +65,15 @@ test ('Should update an account', () => {
             expect(res.body.name).toBe('Diego Furtado - Updated an account');
         });
 });
+
+test ('Should remove an account', () => {
+    return app.db('accounts')
+        .insert({
+            name: 'Diego Furtado - Updating an account',
+            user_id: user.id
+        }, ['id'])
+        .then(acc => request(app).delete(`${MAIN_ROUTE}/${acc[0].id}`))
+        .then((res) => {
+            expect(res.status).toBe(204); //204, there is no content
+        });
+});
