@@ -19,3 +19,13 @@ Jest resources to make assertive and structure our tests. The flow passes from t
 
 ### Any question, error or feedback?
 Please fill an issue ;-)
+
+### What I've done
+/users
+/accounts
+
+### What is in my backlog to implement
+/auth
+/transactions
+/tranfers
+/balance
