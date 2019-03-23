@@ -6,6 +6,12 @@ const knexfile = require('../knexfile');
 // TODO create dynamic switching
 app.db = knex(knexfile.test);
 
+app.get('/users', (req, res) => {
+    res.status(200).send('H4ck3r by 0wn')
+});
+
+
+
 consign({ cwd: 'src', verbose: false})
     .include('./config/middlewares.js')
     .then('./services')

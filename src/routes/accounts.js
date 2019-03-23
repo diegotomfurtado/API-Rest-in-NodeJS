@@ -2,9 +2,10 @@ module.exports = (app) => {
     const create = (req, res) => {
         app.services.account.save(req.body)
             .then((result) => {
-                return res.status(201)
-                .json(result[0]);
-            });
+                return res.status(201).json(result[0]);
+
+            })
+            .catch (error => res.status(400).json({error: error.message}));
     };
 
     const getAll = (req, res) => {

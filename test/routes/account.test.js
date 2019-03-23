@@ -25,6 +25,17 @@ test('Should add an accounts with success', () => {
         });
 });
 
+test ('Should not create an account without name', () => {
+    return request(app).post(MAIN_ROUTE)
+        .send({
+            user_id: user.id
+        })
+        .then((result) => {
+            expect(result.status).toBe(400);
+            expect(result.body.error).toBe('Name is required!');
+        });
+});
+
 test('Should list all existing accounts', () => {
     return app.db('accounts')
         .insert({
@@ -69,7 +80,7 @@ test ('Should update an account', () => {
 test ('Should remove an account', () => {
     return app.db('accounts')
         .insert({
-            name: 'Diego Furtado - Updating an account',
+            name: 'Diego Furtado - Removing an account',
             user_id: user.id
         }, ['id'])
         .then(acc => request(app).delete(`${MAIN_ROUTE}/${acc[0].id}`))
