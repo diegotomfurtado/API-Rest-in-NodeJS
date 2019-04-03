@@ -1,7 +1,10 @@
 node {
 
-
     stage('Setup - Install dependencies'){
+
+      deleteDir()
+      checkout scm
+      sh 'cat README.md' 
 
       env.NODEJS_HOME = "${tool 'NodeJS'}"
       env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
@@ -13,7 +16,14 @@ node {
 
     stage('Testing'){
 
-      sh 'npm test'
+      parallel FrontendTests: { 
+                  echo 'Testing Frontend..' 
+                  sh 'npm test'
+                },
+               BackendTests: { 
+                  echo 'Testing Backend..' 
+                }
+
     }
 
     stage('Deploy') {
