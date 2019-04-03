@@ -10,6 +10,7 @@ node {
       
       sh 'git log'
       sh 'npm install'
+      sh 'npm install -D jest jest-junit'
 
     }
 
