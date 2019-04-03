@@ -10,5 +10,16 @@ try {
       git log
     }
 
-    
+    stage('Testing'){
+
+      sh 'npm test'
+    }
+
+    stage('Deploy') {
+
+      echo "Nothing to say"
+      if (currentBuild.result == null || currentBuild.result == 'SUCCESS') {
+            sh 'make publish'
+        }
+    }
 }
