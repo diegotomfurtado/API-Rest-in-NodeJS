@@ -2,7 +2,7 @@ node {
 
     stage('Setup - Install dependencies'){
 
-      deleteDir()
+      
       checkout scm
       sh 'cat README.md' 
 
@@ -12,6 +12,21 @@ node {
       sh 'git log'
       sh 'npm install'
 
+    }
+
+    stage('Lint') {
+     
+        echo 'javascript Linter'
+        sh 'npm run eslint'
+     
+    }
+    stage('Migrate') {
+     
+        echo 'Knex migration'
+        sh 'npm run knex migrate:rollback'
+        sh 'npm run knex migrate:latest'
+        sh 'npm run knex seed:run'
+     
     }
 
     stage('Testing'){
