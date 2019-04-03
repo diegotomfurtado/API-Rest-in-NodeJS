@@ -4,13 +4,13 @@ const app = require('../../src/app');
 
 const mail = `${Date.now()}@gmail.com`;
 
-test ('Should list all users', () => {
-    return request(app).get('/users')
-        .then((res) => {
-            expect(res.status).toBe(200);
-            expect(res.body.length).toBeGreaterThan(0);
-        });
-})
+// test ('Should list all users', () => {
+//     return request(app).get('/users')
+//         .then((res) => {
+//             expect(res.status).toBe(200);
+//             expect(res.body.length).toBeGreaterThan(0);
+//         });
+// })
 
 test('Should add a user with success', () => {
     return request(app).post('/users')
