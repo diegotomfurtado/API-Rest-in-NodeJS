@@ -1,5 +1,5 @@
 node {
-    env.NODEJS_HOME = "${tool 'NodeJS'}"
+    env.NODEJS_HOME = "${tool}"
     // on linux / mac
     env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
     // on windows
