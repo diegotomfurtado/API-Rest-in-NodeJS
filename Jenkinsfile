@@ -12,4 +12,10 @@ node {
 
       sh 'npm test'
     }
+
+    stage('Deploy') {
+        if (currentBuild.result == null || currentBuild.result == 'SUCCESS') {
+            sh 'make publish'
+        }
+    }
 }
