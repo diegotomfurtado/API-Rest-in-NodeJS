@@ -8,7 +8,7 @@ node {
       sh 'npm install'
     }
 
-    stage('Test'){
+    stage('Testing..'){
 
       sh 'npm test'
     }
