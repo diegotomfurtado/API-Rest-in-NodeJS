@@ -1,3 +1,5 @@
+def status = 'ready'
+
 node {
 
     stage('Setup - Install dependencies'){
@@ -13,6 +15,37 @@ node {
       sh 'npm install -D jest jest-junit'
 
     }
+
+
+    stage('Building') {    
+      echo 'Trying to do something..'
+    
+      try { 
+
+        sh "sudo chown -R jenkins: ${WORKSPACE}"
+        deleteDir()       
+        checkout scm
+        sh "sudo printenv > result"
+      
+      } catch (e) {
+          status = 'failed'
+          echo 'Failed'
+          throw e
+        }
+        finally {  
+        
+          if (status=='ready'){ 
+            sh 'echo "Finally something is working..."  >> result'
+            stash includes: '**/result', name: 'res'
+          }
+          else{
+            sh 'echo "Build failed.. Try again." >> result'
+            archiveArtifacts artifacts: '**/result', fingerprint: true
+          }
+        }  
+    }
+
+
 
     stage ('tests') {
       withEnv(["JEST_JUNIT_OUTPUT=./jest-test-results.xml"]) {
