@@ -3,8 +3,8 @@ node {
     stage('Setup - Install dependencies'){
 
       deleteDir()
-      git url: 'https://github.com/diegotomfurtado/API-Rest-in-NodeJS'
-      sh "git clean -f && git reset --hard origin/master"
+      checkout scm
+      sh 'cat README.md' 
 
       env.NODEJS_HOME = "${tool 'NodeJS'}"
       env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
