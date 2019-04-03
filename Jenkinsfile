@@ -2,7 +2,6 @@ node {
 
     stage('Setup - Install dependencies'){
 
-      
       checkout scm
       sh 'cat README.md' 
 
