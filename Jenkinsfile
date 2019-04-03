@@ -9,12 +9,14 @@ node {
     }
 
     stage('Testing'){
-    
+
       sh 'npm test'
     }
 
     stage('Deploy') {
-        if (currentBuild.result == null || currentBuild.result == 'SUCCESS') {
+
+      echo "Nothing to say"
+      if (currentBuild.result == null || currentBuild.result == 'SUCCESS') {
             sh 'make publish'
         }
     }
