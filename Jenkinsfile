@@ -4,7 +4,9 @@ node {
 
     stage('Setup - Install dependencies'){
 
-      checkout scm 
+
+      sh 'sudo ls'
+
 
       env.NODEJS_HOME = "${tool 'NodeJS'}"
       env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
@@ -41,8 +43,6 @@ node {
         }  
         echo '######## (DooD) FINISHED ########'
     }
-
-
 
     stage('Testing'){
 
