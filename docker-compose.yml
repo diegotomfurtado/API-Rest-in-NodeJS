@@ -9,16 +9,4 @@ services:
     - '~/unit-test-sample/jenkins:/var/jenkins_home'
     - '/var/run/docker.sock:/var/run/docker.sock'
     - '/usr/local/bin/docker:/usr/bin/docker'
-  db:
-    image: postgres:10.1
-    restart: unless-stopped
-    environment:
-      - POSTGRES_USER=sonar
-      - POSTGRES_PASSWORD=v07IGCFCF83Z95NX
-      - POSTGRES_DB=sonarqube
-    volumes:
-      - sonarqube_db:/var/lib/postgresql
-      - postgresql_data:/var/lib/postgresql/data
-
-volumes:
-  postgresql_data:
+  
