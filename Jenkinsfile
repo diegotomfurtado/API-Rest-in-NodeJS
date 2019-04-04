@@ -17,12 +17,7 @@ node {
 
 
 
-    stage ('tests') {
-      withEnv(["JEST_JUNIT_OUTPUT=./jest-test-results.xml"]) {
-        sh 'npm jest --ci --reporters=default --reporters=jest-junit'
-      }
-      junit 'jest-test-results.xml'
-    }
+
 
     stage('Testing'){
 
