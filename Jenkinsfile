@@ -5,8 +5,8 @@ node {
     stage('Setup - Install dependencies'){
 
 
-      sh 'sudo run apt-get update'
-      sh 'sudo run apt-get install -y nodejs'
+      sh 'sudo docker run apt-get update'
+      sh 'sudo docker run apt-get install -y nodejs'
 
       env.NODEJS_HOME = "${tool 'NodeJS'}"
       env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
