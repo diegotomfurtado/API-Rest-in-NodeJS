@@ -9,17 +9,12 @@ node {
       env.NODEJS_HOME = "${tool 'NodeJS'}"
       env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
 
-
       sh 'npm install'
+      sh 'npm install -D jest jest-junit'
     
-      echo '(DooD) SUDO DOCKER PS (START)'
+      echo '######## (DooD) STARTING ########'
+      
       sh 'sudo docker ps'
-      echo '(DooD) SUDO DOCKER PS (END)'
-    }
-
-
-    stage('Building') {    
-      echo 'Trying to do something..'
     
       try { 
 
@@ -44,6 +39,7 @@ node {
             archiveArtifacts artifacts: '**/result', fingerprint: true
           }
         }  
+        echo '######## (DooD) FINISHED ########'
     }
 
 
