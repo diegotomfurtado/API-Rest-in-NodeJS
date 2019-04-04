@@ -4,9 +4,15 @@ node {
 
     stage('Setup - Install dependencies'){
 
-      
-      sh 'sudo npm install'
-      sh 'sudo npm install -D jest jest-junit'
+
+      sh 'sudo run apt-get update'
+      sh 'sudo run apt-get install -y nodejs'
+
+      env.NODEJS_HOME = "${tool 'NodeJS'}"
+      env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
+
+      sh 'sudo docker run npm install'
+      sh 'sudo docker run npm install -D jest jest-junit'
     
       echo '######## (DooD) STARTING ########'
       
