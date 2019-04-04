@@ -4,9 +4,7 @@ node {
 
     stage('Setup - Install dependencies'){
 
-      sh 'sudo env.NODEJS_HOME = "${tool 'NodeJS'}"'
-      sh 'sudo env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"'
-
+      
       sh 'sudo npm install'
       sh 'sudo npm install -D jest jest-junit'
     
