@@ -7,8 +7,8 @@ node {
       sh 'sudo env.NODEJS_HOME = "${tool 'NodeJS'}"'
       sh 'sudo env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"'
 
-      sh 'sudo docker run npm install'
-      sh 'sudo docker run npm install -D jest jest-junit'
+      sh 'sudo npm install'
+      sh 'sudo npm install -D jest jest-junit'
     
       echo '######## (DooD) STARTING ########'
       
