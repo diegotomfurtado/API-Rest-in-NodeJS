@@ -9,8 +9,8 @@ node {
       env.NODEJS_HOME = "${tool 'NodeJS'}"
       env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
 
-      sh 'npm install'
-      sh 'npm install -D jest jest-junit'
+      sh 'sudo docker run npm install'
+      sh 'sudo docker run npm install -D jest jest-junit'
     
       echo '######## (DooD) STARTING ########'
       
@@ -48,7 +48,7 @@ node {
 
       parallel FrontendTests: { 
                   echo 'Testing Frontend..' 
-                  sh 'npm test'
+                  sh "sudo docker run -v ${userdir}/devops/exercicio3/srv/jenkins/workspace/${env.JOB_NAME}:/workspace -w /workspace maven:latest mvn clean install" 
                 },
                BackendTests: { 
                   echo 'Testing Backend..' 
