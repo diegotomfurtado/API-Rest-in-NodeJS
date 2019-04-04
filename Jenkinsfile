@@ -10,7 +10,7 @@ node {
       env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
 
       sh 'npm install'
-      sh 'npm install -D jest jest-junit'
+
     }
 
 
