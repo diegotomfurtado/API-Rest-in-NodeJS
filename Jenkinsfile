@@ -10,7 +10,7 @@ node {
       env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
 
 
-      sh 'sudo npm install'
+      sh 'npm install'
     
       echo '(DooD) SUDO DOCKER PS (START)'
       sh 'sudo docker ps'
