@@ -5,11 +5,6 @@ node {
     stage('Setup - Install dependencies'){
 
 
-
-
-      env.NODEJS_HOME = "${tool 'NodeJS'}"
-      env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
-
       sh 'sudo docker run npm install'
       sh 'sudo docker run npm install -D jest jest-junit'
     
