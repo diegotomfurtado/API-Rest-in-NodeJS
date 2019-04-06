@@ -48,8 +48,9 @@ node {
     stage('Testing'){
 
       parallel FrontendTests: { 
-                  echo 'Testing Frontend..' 
-                  sh 'sudo docker run npm test'
+                  echo 'Testing Frontend..'
+
+                  sh 'npm test'
                 },
                BackendTests: { 
                   echo 'Testing Backend..' 
