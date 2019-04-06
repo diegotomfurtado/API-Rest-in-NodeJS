@@ -12,10 +12,7 @@ node {
       
       sh 'sudo docker ps'
 
-      sh 'sudo apt-get install curl'
-      sh 'sudo apt update'
-      sh 'curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -'
-      sh 'sudo apt-get install -y nodejs'
+      sh 'npm install'
     
       try { 
 
