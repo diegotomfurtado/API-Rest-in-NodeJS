@@ -12,11 +12,15 @@ node {
       
       sh 'sudo docker ps'
 
-      sh 'sudo apt-get install curl'
-      sh 'sudo apt update'
-      sh 'curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -'
-      sh 'sudo apt-get install -y nodejs'
-      sh 'npm install -D jest jest-junit'
+      sh 'npm init -y'
+      sh 'npm i -D eslint'
+      sh './node_modules/.bin/eslint --init'
+      sh './node_modules/.bin/eslint src/** test/** --fix'
+      sh 'npm run lint'
+
+      sh 'npm i -D jest@23.6.0 -E'
+      sh './node_modules/.bin/jest'
+
     
       try { 
 
