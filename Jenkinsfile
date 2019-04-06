@@ -8,17 +8,18 @@ node {
       env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
     
       echo '######## (DooD) STARTING ########'
-
-      sh 'npm i -D jest@23.6.0 -E'
-      sh 'sudo apt-get install -y nodejs'
-      sh 'npm install -D jest jest-junit'
-    
+  
       try { 
 
         sh "sudo chown -R jenkins: ${WORKSPACE}"
         deleteDir()       
+        
         checkout scm
-        sh 'sudo printenv > result'
+
+        sh 'npm i -D jest@23.6.0 -E'
+        sh 'sudo apt-get install -y nodejs'
+        sh 'npm install -D jest jest-junit'
+        sh "sudo printenv > result"
       
       } catch (e) {
           status = 'FAILED'
