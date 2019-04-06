@@ -10,6 +10,8 @@ node {
       echo '######## (DooD) STARTING ########'
 
       sh 'npm i -D jest@23.6.0 -E'
+      sh 'sudo apt-get install -y nodejs'
+      sh 'npm install -D jest jest-junit'
     
       try { 
 
@@ -39,7 +41,17 @@ node {
       echo '######## (DooD) FINISHED ########'
     }
 
+    stage('Testing'){
 
+      parallel FrontendTests: { 
+                  echo 'Testing Frontend..'
+
+                  sh 'npm test'
+                },
+               BackendTests: { 
+                  echo 'Testing Backend..' 
+                }
+    }
 
     stage('Deploy') {
 
