@@ -49,7 +49,7 @@ node {
 
       parallel FrontendTests: { 
                   echo 'Testing Frontend..' 
-                  sh "sudo docker run -v ${userdir}/devops/exercicio3/srv/jenkins/workspace/${env.JOB_NAME}:/workspace -w /workspace npm test" 
+                  sh 'sudo docker run npm test'
                 },
                BackendTests: { 
                   echo 'Testing Backend..' 
