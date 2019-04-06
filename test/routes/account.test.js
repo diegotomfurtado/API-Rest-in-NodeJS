@@ -13,6 +13,8 @@ beforeAll(async () => {
     user = { ...res[0] };
 });
 
+afterAll(() => setTimeout(() => process.exit(), 1000))
+
 test('Should add an accounts with success', () => {
     return request(app).post(MAIN_ROUTE)
         .send({
