@@ -31,12 +31,12 @@ node {
         if (status=='SUCCESS'){ 
           
           sh 'echo "Finally something is working..."  >> result'
-          stash includes: '**/result.jar', name: 'res'
+          stash includes: '**/result', name: 'res'
         }
         else{
           
           sh 'echo "Build failed.. Try again." >> result'
-          archiveArtifacts artifacts: '**/result.jar', fingerprint: true
+          archiveArtifacts artifacts: '**/result', fingerprint: true
         }
       }  
       echo '######## (DooD) FINISHED ########'
