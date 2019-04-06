@@ -9,14 +9,10 @@ node {
       env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
     
       echo '######## (DooD) STARTING ########'
-      
-      sh 'sudo docker ps'
-
 
       sh 'npm i -D jest@23.6.0 -E'
-      sh './node_modules/.bin/jest'
+      
 
-    
       try { 
 
         sh "sudo chown -R jenkins: ${WORKSPACE}"

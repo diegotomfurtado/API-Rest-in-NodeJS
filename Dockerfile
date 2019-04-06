@@ -12,7 +12,7 @@ RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
 RUN apt-get update
 RUN apt-get install -y sudo
-RUN apt-get install -y node.js 
+RUN apt-get install -y node.js
 
 COPY --from=node /usr/local/bin/node /usr/local/bin/
 COPY --from=node /usr/local/include/node/ /usr/local/include/node/
