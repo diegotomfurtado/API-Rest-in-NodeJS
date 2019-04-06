@@ -16,7 +16,6 @@ node {
       sh 'npm i -D eslint'
       sh './node_modules/.bin/eslint --init'
       sh './node_modules/.bin/eslint src/** test/** --fix'
-      sh 'npm run lint'
 
       sh 'npm i -D jest@23.6.0 -E'
       sh './node_modules/.bin/jest'
