@@ -60,6 +60,7 @@ node {
             sh 'make publish'
       }
       else {
+      echo 'EEEEEEEEEEEEEEEEnnnnnnnnnnDDDDDDDD....'
             sh 'make publish'
       }
     }
