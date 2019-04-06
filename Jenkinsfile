@@ -16,7 +16,7 @@ node {
         sh "sudo chown -R jenkins: ${WORKSPACE}"
         deleteDir()       
         checkout scm
-        sh "sudo printenv > result"
+        sh 'sudo printenv > result'
       
       } catch (e) {
           status = 'FAILED'
