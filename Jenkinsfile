@@ -14,7 +14,7 @@ node {
 
       sh 'sudo apt-get install curl'
       sh 'sudo apt update'
-      sh 'curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -''
+      sh 'curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -'
       sh 'sudo apt-get install -y nodejs'
     
       try { 
