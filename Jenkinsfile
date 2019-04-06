@@ -28,12 +28,12 @@ node {
         if (status=='SUCCESS'){ 
           
           sh 'echo "Finally something is working..."  >> result'
-          stash includes: '**/result', name: 'res'
+          stash includes: '**/result.jar', name: 'res'
         }
         else{
           
           sh 'echo "Build failed.. Try again." >> result'
-          archiveArtifacts artifacts: '**/result', fingerprint: true
+          archiveArtifacts artifacts: '**/result.jar', fingerprint: true
         }
       }  
       echo '######## (DooD) FINISHED ########'
@@ -44,11 +44,10 @@ node {
     stage('Deploy') {
 
       if (currentBuild.result == null || currentBuild.result == 'SUCCESS') {
-            archiveArtifacts artifacts: '**/target/nodeJsDevOps_SUCESS.jar', fingerprint: true
             sh 'make publish'
       }
       else {
-            archiveArtifacts artifacts: '**/target/nodeJsDevOps_FAILED.jar', fingerprint: true
+            sh 'make publish'
       }
     }
 
