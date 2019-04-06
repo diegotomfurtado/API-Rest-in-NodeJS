@@ -12,7 +12,7 @@ node {
       
       sh 'sudo docker ps'
 
-      sudo apt-get install curl
+      sh 'sudo apt-get install curl'
     
       try { 
 
