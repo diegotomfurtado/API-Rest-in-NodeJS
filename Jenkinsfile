@@ -46,10 +46,9 @@ node {
       parallel FrontendTests: { 
                   echo 'Testing Frontend..'
 
-                  withEnv(["JEST_JUNIT_OUTPUT=./jest-test-results.xml"]) {
+
                     sh 'npm test -- --ci --testResultsProcessor="jest-junit"'
-                  }
-                  junit 'jest-test-results.xml'
+
                 },
                BackendTests: { 
                   echo 'Testing Backend..' 
