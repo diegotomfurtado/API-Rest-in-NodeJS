@@ -1,4 +1,5 @@
 def status = 'ready'
+def userdir = '/home/diego'
 
 node {
 
@@ -10,6 +11,8 @@ node {
       echo '######## (DooD) STARTING ########'
       
       sh 'sudo docker ps'
+
+      sudo apt-get install curl
     
       try { 
 
@@ -26,17 +29,12 @@ node {
       finally {  
       
         if (status=='ready'){ 
+          
           sh 'echo "Finally something is working..."  >> result'
           stash includes: '**/result', name: 'res'
-
-         sh 'sudo node -v'
-         sh 'npm prune'
-         sh 'npm install'
-
-
-
         }
         else{
+          
           sh 'echo "Build failed.. Try again." >> result'
           archiveArtifacts artifacts: '**/result', fingerprint: true
         }
