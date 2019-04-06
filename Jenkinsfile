@@ -39,26 +39,4 @@ node {
       echo '######## (DooD) FINISHED ########'
     }
 
-    stage('Testing'){
-
-      parallel FrontendTests: { 
-                  echo 'Testing Frontend..'
-
-                  sh 'npm test'
-                },
-               BackendTests: { 
-                  echo 'Testing Backend..' 
-                }
-
-    }
-
-    stage('Deploy') {
-
-      if (currentBuild.result == null || currentBuild.result == 'SUCCESS') {
-            archiveArtifacts artifacts: '**/target/nodeJsDevOps_SUCESS.jar', fingerprint: true
-      }
-      else {
-            archiveArtifacts artifacts: '**/target/nodeJsDevOps_FAILED.jar', fingerprint: true
-      }
-    }
 }
