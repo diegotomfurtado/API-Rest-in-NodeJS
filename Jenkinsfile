@@ -46,9 +46,7 @@ node {
       parallel FrontendTests: { 
                   echo 'Testing Frontend..'
 
-
-                    sh 'npm test'
-
+                  sh './node_modules/.bin/jest'
                 },
                BackendTests: { 
                   echo 'Testing Backend..' 
