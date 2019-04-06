@@ -2,14 +2,10 @@ def status = 'ready'
 
 node {
 
-    stage('Setup - Install dependencies'){
-
-
+    stage('Setup - Install dependencies') {
 
       env.NODEJS_HOME = "${tool 'NodeJS'}"
       env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
-
-
     
       echo '######## (DooD) STARTING ########'
       
@@ -27,18 +23,25 @@ node {
           echo 'Could not into the VM.'
           throw e
         }
-        finally {  
-        
-          if (status=='ready'){ 
-            sh 'echo "Finally something is working..."  >> result'
-            stash includes: '**/result', name: 'res'
-          }
-          else{
-            sh 'echo "Build failed.. Try again." >> result'
-            archiveArtifacts artifacts: '**/result', fingerprint: true
-          }
-        }  
-        echo '######## (DooD) FINISHED ########'
+      finally {  
+      
+        if (status=='ready'){ 
+          sh 'echo "Finally something is working..."  >> result'
+          stash includes: '**/result', name: 'res'
+
+         sh 'sudo node -v'
+         sh 'npm prune'
+         sh 'npm install'
+
+
+
+        }
+        else{
+          sh 'echo "Build failed.. Try again." >> result'
+          archiveArtifacts artifacts: '**/result', fingerprint: true
+        }
+      }  
+      echo '######## (DooD) FINISHED ########'
     }
 
     stage('Testing'){
