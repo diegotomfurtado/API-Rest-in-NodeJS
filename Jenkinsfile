@@ -47,7 +47,7 @@ node {
                   echo 'Testing Frontend..'
 
 
-                    sh 'npm test -- --ci --testResultsProcessor="jest-junit"'
+                    sh 'npm test'
 
                 },
                BackendTests: { 
