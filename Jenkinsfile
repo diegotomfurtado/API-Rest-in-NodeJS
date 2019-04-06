@@ -39,4 +39,17 @@ node {
       echo '######## (DooD) FINISHED ########'
     }
 
+
+
+    stage('Deploy') {
+
+      if (currentBuild.result == null || currentBuild.result == 'SUCCESS') {
+            archiveArtifacts artifacts: '**/target/nodeJsDevOps_SUCESS.jar', fingerprint: true
+            sh 'make publish'
+      }
+      else {
+            archiveArtifacts artifacts: '**/target/nodeJsDevOps_FAILED.jar', fingerprint: true
+      }
+    }
+
 }
