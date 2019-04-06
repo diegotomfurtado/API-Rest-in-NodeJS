@@ -13,7 +13,8 @@ node {
       sh 'sudo docker ps'
 
       sh 'sudo apt-get install curl'
-      sh 'sudo apt-get install nodejs'
+      sh 'sudo apt update'
+      sh 'sudo apt install nodejs npm'
     
       try { 
 
