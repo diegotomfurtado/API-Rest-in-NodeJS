@@ -1,5 +1,4 @@
-def status = 'ready'
-def userdir = '/home/diego'
+def status = 'SUCCESS'
 
 node {
 
@@ -11,7 +10,7 @@ node {
       echo '######## (DooD) STARTING ########'
 
       sh 'npm i -D jest@23.6.0 -E'
-      sh './node_modules/.bin/jest --detectOpenHandles'
+    
 
       try { 
 
@@ -21,13 +20,13 @@ node {
         sh "sudo printenv > result"
       
       } catch (e) {
-          status = 'failed'
+          status = 'FAILED'
           echo 'Could not into the VM.'
           throw e
         }
       finally {  
       
-        if (status=='ready'){ 
+        if (status=='SUCCESS'){ 
           
           sh 'echo "Finally something is working..."  >> result'
           stash includes: '**/result', name: 'res'
@@ -46,7 +45,7 @@ node {
       parallel FrontendTests: { 
                   echo 'Testing Frontend..'
 
-                  sh './node_modules/.bin/jest'
+                  sh 'npm test'
                 },
                BackendTests: { 
                   echo 'Testing Backend..' 
@@ -58,7 +57,10 @@ node {
 
       echo "Nothing to say"
       if (currentBuild.result == null || currentBuild.result == 'SUCCESS') {
-            sh 'make publish'
-        }
+            archiveArtifacts artifacts: '**/target/nodeJsDevOps_SUCESS.jar', fingerprint: true
+      }
+      else {
+            archiveArtifacts artifacts: '**/target/nodeJsDevOps_FAILED.jar', fingerprint: true
+      }
     }
 }
