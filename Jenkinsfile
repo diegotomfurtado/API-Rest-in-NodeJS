@@ -11,7 +11,7 @@ node {
       echo '######## (DooD) STARTING ########'
 
       sh 'npm i -D jest@23.6.0 -E'
-      
+      sh './node_modules/.bin/jest'
 
       try { 
 
